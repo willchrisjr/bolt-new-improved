@@ -132,3 +132,63 @@ Here are some tips to get the most out of Bolt.new:
 - **Scaffold the basics first, then add features**: Make sure the basic structure of your application is in place before diving into more advanced functionality. This helps Bolt understand the foundation of your project and ensure everything is wired up right before building out more advanced functionality.
 
 - **Batch simple instructions**: Save time by combining simple instructions into one message. For example, you can ask Bolt to change the color scheme, add mobile responsiveness, and restart the dev server, all in one go saving you time and reducing API credit consumption significantly.
+
+## How to Contribute
+
+We welcome contributions from the community! If you're interested in contributing to the project, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Write your code and tests.
+4. Submit a pull request.
+
+For more details, please refer to the [CONTRIBUTING.md](./CONTRIBUTING.md) file.
+
+## Reporting Bugs and Requesting Features
+
+If you encounter any bugs or have feature requests, please use the following links to report them:
+
+- [Report a Bug](https://github.com/coleam00/bolt.new-any-llm/issues/new?assignees=&labels=bug&template=bug_report.yml&title=%5BBug%5D)
+- [Request a Feature](https://github.com/coleam00/bolt.new-any-llm/issues/new?assignees=&labels=enhancement&template=feature_request.md&title=%5BFeature%5D)
+
+## Setting Up the Development Environment
+
+To set up the development environment, follow these steps:
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/coleam00/bolt.new-any-llm.git
+```
+
+2. Install dependencies:
+
+```bash
+pnpm install
+```
+
+3. Rename `.env.example` to `.env.local` and add your LLM API keys:
+
+```
+GROQ_API_KEY=XXX
+OPENAI_API_KEY=XXX
+ANTHROPIC_API_KEY=XXX
+```
+
+4. Optionally, set the debug level:
+
+```
+VITE_LOG_LEVEL=debug
+```
+
+**Important**: Never commit your `.env.local` file to version control. It's already included in .gitignore.
+
+## Running the Development Server
+
+To run the development server, use the following command:
+
+```bash
+pnpm run dev
+```
+
+This will start the Remix Vite development server. You will need Google Chrome Canary to run this locally if you use Chrome! It's an easy install and a good browser for web development anyway.

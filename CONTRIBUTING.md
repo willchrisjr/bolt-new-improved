@@ -9,6 +9,7 @@ First off, thank you for considering contributing to Bolt.new! This fork aims to
 - [Coding Standards](#coding-standards)
 - [Development Setup](#development-setup)
 - [Project Structure](#project-structure)
+- [Adding New LLM Providers and Models](#adding-new-llm-providers-and-models)
 
 ## Code of Conduct
 
@@ -88,11 +89,44 @@ pnpm run dev
 
 **Note**: You will need Google Chrome Canary to run this locally if you use Chrome! It's an easy install and a good browser for web development anyway.
 
-## Questions?
+## Adding New LLM Providers and Models
 
-For any questions about contributing, please:
-1. Check existing documentation
-2. Search through issues
-3. Create a new issue with the question label
+To add new LLM providers and models, follow these steps:
 
-Thank you for contributing to Bolt.new! 🚀
+1. **Update `MODEL_LIST` in `app/utils/constants.ts`**:
+   - Open the `app/utils/constants.ts` file.
+   - Locate the `MODEL_LIST` constant.
+   - Add a new entry to the `MODEL_LIST` array with the following structure:
+     ```typescript
+     {
+       name: 'model-id', // The model ID from the provider's API documentation
+       label: 'Model Label', // A label for the frontend model dropdown
+       provider: 'ProviderName' // The name of the provider
+     }
+     ```
+
+2. **Implement Provider-Specific Logic**:
+   - If the provider is not already implemented, you will need to add provider-specific logic in `app/lib/.server/llm/model.ts`.
+   - Create a new function for the provider that encapsulates its specific logic.
+   - Ensure the function returns a consistent interface.
+
+3. **Manage API Keys and Base URLs**:
+   - Add the provider's API key and base URL to the central configuration in `app/lib/.server/llm/api-key.ts`.
+   - Use environment variables to manage these values.
+
+4. **Handle Errors Gracefully**:
+   - Implement error handling for the new provider to manage issues like invalid API keys or network errors.
+
+5. **Document the New Provider**:
+   - Update the documentation in `app/lib/.server/llm/model.ts` to include the new provider.
+   - Add any specific requirements or limitations for the new provider.
+
+6. **Test the Integration**:
+   - Manually verify that the new provider and model work as expected.
+   - Ensure that the functions return a consistent interface and handle errors gracefully.
+
+7. **Update the `README.md`**:
+   - Add information about the new provider and model to the `README.md` file.
+   - Include any specific setup instructions or requirements.
+
+By following these steps, you can add new LLM providers and models to Bolt.new, making it even more versatile and powerful.
